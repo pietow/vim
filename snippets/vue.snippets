@@ -1,0 +1,74 @@
+snippet cl
+	console.log(${2});
+
+snippet map
+	${1}.map((${2}) => {
+	    ${3}
+	})
+
+snippet fe
+	${1}.forEach((${2}) => {
+	    ${3}
+	})
+
+snippet ev
+	${1}.every((${2}) => {
+	    ${3}
+	})
+
+snippet if
+	if( ${1} ){
+	${2}
+	}    
+
+snippet els
+	if( ${1} ){
+	    ${2}
+	} else {
+	    ${3}
+	}   
+
+snippet elif
+	if( ${1} ){
+	${2}
+	} else if( ${2} ) {
+	    ${3}
+	}  else {
+	    ${5}
+	}  
+
+snippet elif2
+	if( ${1} ){
+	${2}
+	} else if( ${2} ) {
+	    ${3}
+	} else if( ${4} ) {
+	    ${5}
+	}  else {
+	    ${6}
+	}  
+snippet vue!
+	<template>
+	    <div>
+		${1}
+	    </div>
+	</template>
+	<script>
+	export default
+	{
+	   data()
+	   {
+	       return {
+		    ${2}	
+	       }
+	   },
+	}
+	</script>
+snippet p
+	<p>${1}</p>
+
+snippet h1
+	<h1>${1}</h1>
+
+snippet c
+	class="${1}"
