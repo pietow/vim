@@ -19,9 +19,21 @@ set tabstop=8
 set expandtab
 set softtabstop=4
 set shiftwidth=4
-set rnu                         "relative line number"
+set number                          "line number"
 set novb                        "no visuell bell /flickering
 "                          '  "qp to insert the macro into your let @q = '...' line
+let g:auto_save = 1             "activate vim-autosave"
+
+let g:camelcasemotion_key = '<leader>' "camelcasemotion plugin
+map <silent> w <Plug>CamelCaseMotion_w
+map <silent> b <Plug>CamelCaseMotion_b
+map <silent> e <Plug>CamelCaseMotion_e
+map <silent> ge <Plug>CamelCaseMotion_ge
+sunmap w
+sunmap b
+sunmap e
+sunmap ge
+
 let @c= '/"hvNld'
 let @d= "/'hvNld"
 let @a= "%di)"
@@ -30,6 +42,7 @@ let @e= 'Da"pei"^[F"'
 let @s= "Da'peF'"
 let @y= "$%vBx$xB" "deletes line except braket content
 let @b ="a €kb{{ }}bbwi i"
+let @z= '%%wi class=""€ýa'
 " inoremap " ""<left>
 " inoremap ' ''<left>
 " inoremap [ []<left>

@@ -42,6 +42,8 @@ Plugin 'tkhren/vim-fake'
 Plugin 'sunzhongwei/vim-laravel-snippets'
 Plugin 'prettier/vim-prettier'
 Plugin 'tpope/vim-eunuch'
+Plugin '907th/vim-auto-save'
+Plugin 'bkad/CamelCaseMotion'
 
 
 "" All of your Plugins must be added before the following line
