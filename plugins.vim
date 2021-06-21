@@ -40,9 +40,9 @@ Plugin 'noahfrederick/vim-laravel'
 Plugin 'mattn/emmet-vim'
 Plugin 'tkhren/vim-fake'
 Plugin 'sunzhongwei/vim-laravel-snippets'
-Plugin 'prettier/vim-prettier'
 Plugin 'tpope/vim-eunuch'
 Plugin '907th/vim-auto-save'
+Plugin 'prettier/vim-prettier'
 Plugin 'bkad/CamelCaseMotion'
 
 

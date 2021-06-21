@@ -4,10 +4,12 @@ so ~/.vim/elint/elint.vim
 so ~/.vim/prettier/prettier.vim
 so ~/.vim/path/path.vim
 so ~/.vim/vue/vue.vim
+" so ~/.vim/py_lookup/py_lookup.vim
 
 syntax enable
 
 
+set pastetoggle=<F2>
 set backspace=indent,eol,start
 set noeb vb t_vb=                "disable visual bell
 set belloff=all
@@ -21,9 +23,11 @@ set softtabstop=4
 set shiftwidth=4
 set number                          "line number"
 set novb                        "no visuell bell /flickering
+set statusline=%f\ -\ FileType:\ %y   "file name in statusline"
 "                          '  "qp to insert the macro into your let @q = '...' line
 let g:auto_save = 1             "activate vim-autosave"
 
+"----------------camelcasePLugin--------"
 let g:camelcasemotion_key = '<leader>' "camelcasemotion plugin
 map <silent> w <Plug>CamelCaseMotion_w
 map <silent> b <Plug>CamelCaseMotion_b
@@ -34,6 +38,8 @@ sunmap b
 sunmap e
 sunmap ge
 
+
+"-----------------macros------------"
 let @c= '/"hvNld'
 let @d= "/'hvNld"
 let @a= "%di)"
@@ -43,15 +49,18 @@ let @s= "Da'peF'"
 let @y= "$%vBx$xB" "deletes line except braket content
 let @b ="a €kb{{ }}bbwi i"
 let @z= '%%wi class=""€ýa'
-" inoremap " ""<left>
-" inoremap ' ''<left>
-" inoremap [ []<left>
-" inoremap { {}<left>
-" inoremap {<CR> {<CR>}<ESC>O
-" inoremap {;<CR> {<CR>};<ESC>O
 "
 
-"-------------Visuals--------"
+
+"--------------Opperator-Pending Mappings/Movement Mappiing ------"
+onoremap in :<c-u>normal! f(vi(<cr>
+
+"--------:execute "normal! mqA;\------Normal! execute mapping
+"semikolon at end of line;
+noremap <Leader><leader>k mqA;<esc>`q
+
+
+"-------------Visuals--------
 set t_CO=256
 colorscheme atom-dark-256
 "Color of Linenumbers
@@ -84,14 +93,21 @@ vnoremap <S-Down> :echo "no jumping down" <CR>
 "jump to method/function"
 map <c-9> <c-]>
 
-"-------------Mapping--------"
+"-------------Mapping-finger-training--------"
 nnoremap <Left> :echo "No left for you!"<CR>
 vnoremap <Left> :<C-u>echo "No left for you!"<CR>
 inoremap <Left> <C-o>:echo "No left for you!"<CR>
 nnoremap <Right> :echo "No right for you!"<CR>
 vnoremap <Right> :<C-u>echo "No left for you!"<CR>
 inoremap <Right> <C-o>:echo "No left for you!"<CR>
-nnoremap zt :echo "No annoying z top!"<CR>
+inoremap jk <esc>
+inoremap <esc> <nop>
+nnoremap <up> <nop>
+vnoremap <up> <nop>
+inoremap <up> <nop>
+nnoremap <down> <nop>
+vnoremap <down> <nop>
+inoremap <down> <nop>
 
 "Cursor setting
 if has("autocmd")
@@ -108,7 +124,7 @@ endif
 "Make it easy to edit vimrc"
 nmap <Leader>ev :tabedit $MYVIMRC<cr>
 nmap <Leader>es :e ~/.vim/snippets/<cr>
-nmap <Leader>ep :e ~/.vim/plugins.vim<cr>
+nmap <Leader>ep :e ~/.vim/plugin<cr>
 nmap <Leader>eb :tabedit ~/.vim/bundle/<cr>
 
 "Sort PHP use statements 
@@ -200,8 +216,8 @@ noremap <Leader>js :Fixmyjs<CR>
 
 "------prettier---- changes blade to html, calls prettier and changes html
 "back to blade.php
-nmap <Leader><Leader>b :call Pretty()<CR> 
-nmap <Leader>p :Prettier<CR> 
+noremap <Leader><Leader>b :call Pretty()<CR> 
+noremap <Leader>p :Prettier<CR> 
 
 "-----Move file in current dir
 command! -nargs=1 F execute "call M('<args>')" 
@@ -230,19 +246,7 @@ let g:user_emmet_leader_key=','
 au BufEnter *.php :UltiSnipsAddFiletypes blade.php
 
 
-"---------Beautifier-----"
-" autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
-" " for json
-" autocmd FileType json noremap <buffer> <c-f> :call JsonBeautify()<cr>
-" " for jsx
-" autocmd FileType jsx noremap <buffer> <c-f> :call JsxBeautify()<cr>
-" " for html
-" autocmd FileType blade.php nmap <Leader> <h> :call HtmlBeautify()<cr>
-" nmap <Leader> <h> :call HtmlBeautify()<cr>
-" " for css or scss
-" autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 "--------Auto-Commands-----"
-
 "Automatically source the Vimrc file on save.
 
 augroup autosourcing
@@ -250,7 +254,12 @@ augroup autosourcing
 	autocmd BufWritePost .vimrc source %
 augroup END
 
-" Set up persistent undo across all files.
+augroup autoformating
+    autocmd!
+    autocmd BufWrite *.html,*.css :Prettier
+augroup END
+
+"der>p Set up persistent undo across all files.
 set undofile
 if !isdirectory(expand("$HOME/.vim/undodir"))
   call mkdir(expand("$HOME/.vim/undodir"), "p")
