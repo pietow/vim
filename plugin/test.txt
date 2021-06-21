@@ -1,11 +1,7 @@
 fname,lname,pass
-<input id="fname" name="fname" type="text">
-<input id="lname" name="lname" type="text">
-<input id="pass" name="pass" type="text">
-<label for="pass"></label>
-<label for="lname"></label>
 <label for="fname"></label>
-f
-
-
-bla
+<input id="fname" name="fname" type="text">
+<label for="lname"></label>
+<input id="lname" name="lname" type="text">
+<label for="pass"></label>
+<input id="pass" name="pass" type="text">

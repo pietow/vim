@@ -22,6 +22,7 @@ def inputforms():
         label = tags.label(fr=word)
         input_ = tags.input_(type='text', name=word, id=word)
         b.append(label.render(), pos)
+        pos += 1
         b.append(input_.render(), pos)
         pos += 1
 
