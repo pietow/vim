@@ -1,7 +1,13 @@
-fname,lname,pass
-<label for="fname"></label>
-<input id="fname" name="fname" type="text">
-<label for="lname"></label>
-<input id="lname" name="lname" type="text">
-<label for="pass"></label>
-<input id="pass" name="pass" type="text">
+.fname-$*4
+.fname-1 {
+}
+ 
+.fname-2 {
+}
+ 
+.fname-3 {
+}
+ 
+.fname-4 {
+}
+ 

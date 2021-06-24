@@ -26,11 +26,32 @@ def inputforms():
         b.append(input_.render(), pos)
         pos += 1
 
+def cssRangeSelector():
+    inp = vim.eval("expand('<cWORD>')")
+    inp = inp.split('*')
+    num = int(inp[-1])
+    b = vim.current.buffer
+    cw = vim.current.window
+    pos = cw.cursor[0]
+    for i in range(1, num+1):
+        string = inp[0].replace('$',str(i)) + " {"
+        b.append(string, pos)
+        pos += 1
+        b.append("}", pos)
+        pos += 1
+        b.append(" ", pos)
+        pos += 1
+
+
+
 
 
     #vim.command('1d')
-    print(words)
 en
 
-nmap <silent> ,t :python3 inputforms()<CR>
+nnoremap <silent> ,t :python3 inputforms()<CR>
+inoremap <silent> ,t :python3 inputforms()<CR>
+
+nnoremap <silent> ,f :python3 cssRangeSelector()<CR>
+
 

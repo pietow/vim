@@ -26,6 +26,7 @@ set novb                        "no visuell bell /flickering
 set statusline=%f\ -\ FileType:\ %y   "file name in statusline"
 "                          '  "qp to insert the macro into your let @q = '...' line
 let g:auto_save = 1             "activate vim-autosave"
+let g:auto_save_events = ["InsertLeave", "TextChanged"]
 
 "----------------camelcasePLugin--------"
 let g:camelcasemotion_key = '<leader>' "camelcasemotion plugin
@@ -101,13 +102,20 @@ nnoremap <Right> :echo "No right for you!"<CR>
 vnoremap <Right> :<C-u>echo "No left for you!"<CR>
 inoremap <Right> <C-o>:echo "No left for you!"<CR>
 inoremap jk <esc>
-inoremap <esc> <nop>
-nnoremap <up> <nop>
-vnoremap <up> <nop>
-inoremap <up> <nop>
-nnoremap <down> <nop>
-vnoremap <down> <nop>
-inoremap <down> <nop>
+vnoremap jk <esc>
+nnoremap <leader><leader>. :b#<CR>
+nnoremap <F5> :buffers<CR>:buffer<Space>
+
+" move among buffers with CTRL
+map <C-J> :bnext<CR>
+map <C-K> :bprev<CR>
+"inoremap <esc> <nop>
+"nnoremap <up> <nop>
+"vnoremap <up> <nop>
+"inoremap <up> <nop>
+"nnoremap <down> <nop>
+"vnoremap <down> <nop>
+"inoremap <down> <nop>
 
 "Cursor setting
 if has("autocmd")
@@ -254,10 +262,10 @@ augroup autosourcing
 	autocmd BufWritePost .vimrc source %
 augroup END
 
-augroup autoformating
-    autocmd!
-    autocmd BufWrite *.html,*.css :Prettier
-augroup END
+" augroup autoformating
+"     autocmd!
+"     autocmd BufWritePre *.html,*.css :Prettier
+" augroup END
 
 "der>p Set up persistent undo across all files.
 set undofile
